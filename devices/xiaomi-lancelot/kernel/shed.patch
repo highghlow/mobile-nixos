@@ -1,0 +1,21 @@
+From 1741e92b69da9e01b3f30df1159511fc9323e777 Mon Sep 17 00:00:00 2001
+From: highghlow <132668972+highghlow@users.noreply.github.com>
+Date: Thu, 19 Dec 2024 08:53:45 +0300
+Subject: [PATCH] Update core.c
+
+---
+ kernel/sched/core.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/kernel/sched/core.c b/kernel/sched/core.c
+index 4fcd949f61c8a..b99a9ad5f7fee 100644
+--- a/kernel/sched/core.c
++++ b/kernel/sched/core.c
+@@ -4301,7 +4301,6 @@ void scheduler_tick(void)
+ #ifdef CONFIG_MTK_SCHED_MONITOR
+ 	mt_save_irq_counts(SCHED_TICK);
+ #endif
+-	perf_tracker(sched_ktime_clock());
+ 
+ #ifdef CONFIG_SMP
+ 	rq->idle_balance = idle_cpu(cpu);

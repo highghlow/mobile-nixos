@@ -21,7 +21,21 @@
   };
 
   mobile.system.type = "android";
+
   mobile.system.android.device_name = "lancelot";
+  mobile.system.android = {# This is extremely wrong
+    bootimg.flash = {
+      offset_base = "0x80000000";
+      offset_kernel = "0x00008000";
+      offset_ramdisk = "0x01000000";
+      offset_second = "0x00f00000";
+      offset_tags = "0x00000100";
+      pagesize = "2048";
+    };
+    appendDTB = [
+      "dtbs/qcom/sdm625-motorola-potter.dtb"
+    ];
+  };
 
   #mobile.device.firmware = pkgs.callPackage ./firmware {};
   mobile.boot.stage-1 = {

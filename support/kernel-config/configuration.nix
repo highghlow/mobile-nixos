@@ -115,7 +115,7 @@ in
       RPMSG_TTY = no;
       LOG_BUF_SHIFT = freeform "20";
       CONSOLE_LOGLEVEL_DEFAULT = (whenAtLeast "4.10" (freeform "4"));
-      CONSOLE_LOGLEVEL_QUIET = (whenAtLeast "4.10" (freeform "4"));
+      #CONSOLE_LOGLEVEL_QUIET = (whenAtLeast "4.10" (freeform "4"));
       MESSAGE_LOGLEVEL_DEFAULT = (whenAtLeast "3.17" (freeform "7"));
       PANIC_TIMEOUT = (freeform "5");
       MAGIC_SYSRQ = no;
@@ -388,7 +388,7 @@ in
       PSTORE_LZ4HC_COMPRESS = no;
       PSTORE_842_COMPRESS = no;
       PSTORE_ZSTD_COMPRESS = whenBetween "4.19" "6.6" yes;
-      PSTORE_COMPRESS_DEFAULT = whenOlder "6.6" (freeform ''"zstd"'');
+      #PSTORE_COMPRESS_DEFAULT = whenOlder "6.6" (freeform ''"zstd"'');
     })
 
     (helpers: with helpers; mkDefaultIze {
