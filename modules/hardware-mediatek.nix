@@ -5,6 +5,7 @@ let
   cfg = config.mobile.hardware.socs;
   anyMediatek = lib.any (v: v) [
     cfg.mediatek-mt6755.enable
+    cfg.mediatek-mt6769.enable
     cfg.mediatek-mt6785.enable
     cfg.mediatek-mt8127.enable
     cfg.mediatek-mt8183.enable
@@ -16,6 +17,11 @@ in
       type = types.bool;
       default = false;
       description = lib.mdDoc "enable when SOC is Mediatek MT6755 (Helio P10)";
+    };
+    hardware.socs.mediatek-mt6769.enable = mkOption {
+      type = types.bool;
+      default = false;
+      description = lib.mdDoc "enable when SOC is Mediatek MT6769 (Helio G80)";
     };
     hardware.socs.mediatek-mt6785.enable = mkOption {
       type = types.bool;
@@ -39,6 +45,11 @@ in
       mobile = mkIf cfg.mediatek-mt6755.enable {
         system.system = "aarch64-linux";
         quirks.fb-refresher.enable = true;
+      };
+    }
+    {
+      mobile = mkIf cfg.mediatek-mt6769.enable {
+        system.system = "aarch64-linux";
       };
     }
     {
